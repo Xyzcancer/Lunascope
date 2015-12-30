@@ -11,7 +11,7 @@ import CoreData
 
 
 class DataManager: NSObject {
-    static let sharedInstance = ServerManager()
+    static let sharedInstance = DataManager()
 
     
     func createDay(dayNumber : Int, moonSet : NSDate, moonRise : NSDate) {

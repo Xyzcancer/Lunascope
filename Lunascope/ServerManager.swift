@@ -13,6 +13,16 @@ import Alamofire
 
 class ServerManager: NSObject {
     
+    
+     struct MoonSetRiseParams {
+        var day: Int
+        var month: Int
+        var year: Int
+        var lat: Float
+        var lon: Float
+    
+    }
+    
     static let sharedInstance = ServerManager()
     let serverAddress = "http://lab.ace-solutions.ru/moon/"
     
@@ -22,57 +32,46 @@ class ServerManager: NSObject {
     func getNewMoonDate() {
     
         Alamofire.request(.GET, serverAddress, parameters: ["t": "\(NSDate.init().timeIntervalSince1970)"]).responseJSON { response in
-            print(response.request)  // original URL request
-            print(response.response) // URL response
-            print(response.data)     // server data
-            print(response.result)   // result of response serialization
             
             if let JSON = response.result.value {
 
-            var dateNewMoon  = NSDate.init(timeIntervalSince1970:JSON["new_moon"] as! Double )
-             
-            
-            
+                let dateNewMoon  = NSDate.init(timeIntervalSince1970:JSON["new_moon"] as! Double )
+                self.createLunarMonthByNewMoonDate(dateNewMoon)
             }
         }
-        
-        
-            }
+    }
     
-
+    func getNewMoonRiseSet(param : MoonSetRiseParams, dayNumber : Int) {
         
-        func createLunarMonthByNewMoonDate() {
-        
-        }
-    
-    
-    
-    
-    func getNewMoonRiseSet(day:Int, month: Int, year: Int, lat: Float, lon: Float) {
-        
-        
-        
-        let params =   ["day":"\(day)",
-            "month":"\(month)",
-            "year":"\(year)",
-            "lat":"\(lat)",
-            "lon":"\(lon)",]
+        let params = ["day":"\(param.day)",
+                    "month":"\(param.month)",
+                     "year":"\(param.year)",
+                      "lat":"\(param.lat)",
+                      "lon":"\(param.lon)",]
         
         Alamofire.request(.GET, serverAddress, parameters: params).responseJSON { response in
-            print(response.request)  // original URL request
-            print(response.response) // URL response
-            print(response.data)     // server data
-            print(response.result)   // result of response serialization
             
             if let JSON = response.result.value {
                 
-                var moonSet  = NSDate.init(timeIntervalSince1970:JSON["moonrise"] as! Double )
-                var moonRise  = NSDate.init(timeIntervalSince1970:JSON["moonset"] as! Double )
+                let moonSet  = NSDate.init(timeIntervalSince1970:JSON["moonrise"] as! Double )
+                let moonRise  = NSDate.init(timeIntervalSince1970:JSON["moonset"] as! Double )
                 
-                
+                DataManager.sharedInstance.createDay(dayNumber, moonSet: moonSet, moonRise: moonRise);
             }
         }
+    }
+    
+    func createLunarMonthByNewMoonDate(newMoonDate : NSDate) {
+        
+        
+        
+        let cal = NSCalendar.currentCalendar()
 
+        
+        
+        
+    }
+    
     
     func getDaysBetweenTwoDates(startDate: NSDate, endDate: NSDate) -> NSDateComponents {
         
@@ -92,10 +91,6 @@ class ServerManager: NSObject {
         
         
         return components;
-    
+        
     }
-    
-    
-
-}
 }
