@@ -15,6 +15,7 @@
 		E93B08A31C33CF9E00DECE7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E93B08A11C33CF9E00DECE7F /* LaunchScreen.storyboard */; };
 		E93B08CC1C33D24D00DECE7F /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93B08CB1C33D24D00DECE7F /* ServerManager.swift */; };
 		E93B090F1C3414E500DECE7F /* Lunascope.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E93B090D1C3414E500DECE7F /* Lunascope.xcdatamodeld */; };
+		E93B09321C3417BF00DECE7F /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93B09311C3417BF00DECE7F /* DataManager.swift */; };
 		F47ED708D513AFB093361184 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D093A5AE794FD5127441909B /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		E93B08C81C33D0AF00DECE7F /* bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bridge.h; sourceTree = "<group>"; };
 		E93B08CB1C33D24D00DECE7F /* ServerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerManager.swift; sourceTree = "<group>"; };
 		E93B090E1C3414E500DECE7F /* Lunascope.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Lunascope.xcdatamodel; sourceTree = "<group>"; };
+		E93B09311C3417BF00DECE7F /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 				E93B08981C33CF9E00DECE7F /* FirstViewController.swift */,
 				E93B089A1C33CF9E00DECE7F /* SecondViewController.swift */,
 				E93B08CB1C33D24D00DECE7F /* ServerManager.swift */,
+				E93B09311C3417BF00DECE7F /* DataManager.swift */,
 				E93B089C1C33CF9E00DECE7F /* Main.storyboard */,
 				E93B089F1C33CF9E00DECE7F /* Assets.xcassets */,
 				E93B08A11C33CF9E00DECE7F /* LaunchScreen.storyboard */,
@@ -230,6 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E93B090F1C3414E500DECE7F /* Lunascope.xcdatamodeld in Sources */,
+				E93B09321C3417BF00DECE7F /* DataManager.swift in Sources */,
 				E93B089B1C33CF9E00DECE7F /* SecondViewController.swift in Sources */,
 				E93B08CC1C33D24D00DECE7F /* ServerManager.swift in Sources */,
 				E93B08971C33CF9E00DECE7F /* AppDelegate.swift in Sources */,

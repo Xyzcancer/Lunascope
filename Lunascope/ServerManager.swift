@@ -19,7 +19,7 @@ class ServerManager: NSObject {
     
     
     
-    internal func getNewMoonDate() -> NSDate {
+    func getNewMoonDate() -> NSDate {
     
         Alamofire.request(.GET, serverAddress, parameters: ["t": "\(NSDate.init().timeIntervalSince1970)"]).responseJSON { response in
             print(response.request)  // original URL request
@@ -28,7 +28,11 @@ class ServerManager: NSObject {
             print(response.result)   // result of response serialization
             
             if let JSON = response.result.value {
-                print("JSON: \(JSON["new_moon"])")
+
+            var dateNewMoon  = NSDate.init(timeIntervalSince1970:JSON["new_moon"] as! Double )
+                
+            
+            
             }
         }
         
@@ -38,6 +42,29 @@ class ServerManager: NSObject {
        
     
     return NSDate.init()
+    }
+    
+    
+    
+    func getDaysBetweenTwoDates(startDate: NSDate, endDate: NSDate) -> NSDateComponents {
+        
+        
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        
+        
+        let cal = NSCalendar.currentCalendar()
+        
+        
+        let unit:NSCalendarUnit = .Day
+        
+        let components = cal.components(unit, fromDate: startDate, toDate: endDate, options: .MatchFirst)
+        
+        
+        return components;
+    
     }
     
     
