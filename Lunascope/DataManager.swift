@@ -15,9 +15,23 @@ class DataManager: NSObject {
 
     
     func createDay(dayNumber : Int, moonSet : NSDate, moonRise : NSDate) {
-    
-    
-    
+        
+        let entity =  NSEntityDescription.entityForName("LunarDay",
+            inManagedObjectContext:self.managedObjectContext)
+        
+        let day: LunarDay = NSManagedObject(entity: entity!,
+            insertIntoManagedObjectContext: self.managedObjectContext) as! LunarDay
+        
+        day.moonRise = moonRise
+        day.moonSet = moonSet
+        day.dayNumber = dayNumber
+        
+        do {
+            try self.managedObjectContext.save()
+            
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
     }
     
     

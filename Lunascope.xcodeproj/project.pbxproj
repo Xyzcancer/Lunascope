@@ -16,6 +16,8 @@
 		E93B08CC1C33D24D00DECE7F /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93B08CB1C33D24D00DECE7F /* ServerManager.swift */; };
 		E93B090F1C3414E500DECE7F /* Lunascope.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E93B090D1C3414E500DECE7F /* Lunascope.xcdatamodeld */; };
 		E93B09321C3417BF00DECE7F /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93B09311C3417BF00DECE7F /* DataManager.swift */; };
+		E93B09361C34242900DECE7F /* LunarDay+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93B09341C34242900DECE7F /* LunarDay+CoreDataProperties.swift */; };
+		E93B09371C34242900DECE7F /* LunarDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93B09351C34242900DECE7F /* LunarDay.swift */; };
 		F47ED708D513AFB093361184 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D093A5AE794FD5127441909B /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +37,8 @@
 		E93B08CB1C33D24D00DECE7F /* ServerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerManager.swift; sourceTree = "<group>"; };
 		E93B090E1C3414E500DECE7F /* Lunascope.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Lunascope.xcdatamodel; sourceTree = "<group>"; };
 		E93B09311C3417BF00DECE7F /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		E93B09341C34242900DECE7F /* LunarDay+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LunarDay+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E93B09351C34242900DECE7F /* LunarDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LunarDay.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,7 @@
 		E93B08951C33CF9E00DECE7F /* Lunascope */ = {
 			isa = PBXGroup;
 			children = (
+				E93B09331C34241D00DECE7F /* Model */,
 				E93B08AA1C33D04800DECE7F /* Libs */,
 				E93B08961C33CF9E00DECE7F /* AppDelegate.swift */,
 				E93B08981C33CF9E00DECE7F /* FirstViewController.swift */,
@@ -108,6 +113,15 @@
 				E93B08C81C33D0AF00DECE7F /* bridge.h */,
 			);
 			name = Libs;
+			sourceTree = "<group>";
+		};
+		E93B09331C34241D00DECE7F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E93B09341C34242900DECE7F /* LunarDay+CoreDataProperties.swift */,
+				E93B09351C34242900DECE7F /* LunarDay.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,6 +246,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E93B09361C34242900DECE7F /* LunarDay+CoreDataProperties.swift in Sources */,
+				E93B09371C34242900DECE7F /* LunarDay.swift in Sources */,
 				E93B090F1C3414E500DECE7F /* Lunascope.xcdatamodeld in Sources */,
 				E93B09321C3417BF00DECE7F /* DataManager.swift in Sources */,
 				E93B089B1C33CF9E00DECE7F /* SecondViewController.swift in Sources */,
