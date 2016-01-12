@@ -18,8 +18,8 @@ class ServerManager: NSObject {
         var day: Int
         var month: Int
         var year: Int
-        var lat: Float
-        var lon: Float
+        var lat: Double
+        var lon: Double
     
     }
     
@@ -65,7 +65,26 @@ class ServerManager: NSObject {
         
         
         
-        let cal = NSCalendar.currentCalendar()
+        var curDate = newMoonDate
+        let daysToAdd = 1.0;
+        
+        
+        for index in 1...32 {
+            curDate = curDate.dateByAddingTimeInterval((60*60*24*daysToAdd) as Double)
+            
+            let calendar = NSCalendar.currentCalendar()
+            let components = calendar.components([.Day , .Month , .Year], fromDate: curDate)
+            
+            let year =  components.year
+            let month = components.month
+            let day = components.day
+            let defaults = NSUserDefaults.standardUserDefaults()
+            
+            let paramsDay = MoonSetRiseParams.init(day: day, month: month, year: year, lat: defaults.doubleForKey("lat"), lon: defaults.doubleForKey("lat"))
+            
+            getNewMoonRiseSet(paramsDay, dayNumber: index)
+
+        }
 
         
         
