@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Lunascope/ServerManager.swift"
-            timestampString = "475686830.389267"
+            timestampString = "475688668.269611"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "getMoonMonth(Longitude:Latitude:requestTimestamp:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,7 +42,23 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Lunascope/ServerManager.swift"
-            timestampString = "475686830.389267"
+            timestampString = "475689215.421323"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "getMoonMonth(Longitude:Latitude:requestTimestamp:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Lunascope/ServerManager.swift"
+            timestampString = "475689215.421323"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
@@ -57,13 +73,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Lunascope/ServerManager.swift"
-            timestampString = "475686830.389267"
+            filePath = "Lunascope/DataManager.swift"
+            timestampString = "475687892.852022"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "getMoonMonth(Longitude:Latitude:requestTimestamp:)"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "createDay(_:moonSet:moonRise:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

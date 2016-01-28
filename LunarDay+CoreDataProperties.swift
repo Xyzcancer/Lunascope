@@ -2,7 +2,7 @@
 //  LunarDay+CoreDataProperties.swift
 //  
 //
-//  Created by Андрей Кропотов on 12/30/15.
+//  Created by Андрей Кропотов on 1/28/16.
 //
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -15,7 +15,7 @@ import CoreData
 extension LunarDay {
 
     @NSManaged var dayNumber: NSNumber?
-    @NSManaged var moonSet: NSDate?
-    @NSManaged var moonRise: NSDate?
+    @NSManaged var moonRise: NSNumber?
+    @NSManaged var moonSet: NSNumber?
 
 }

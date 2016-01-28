@@ -27,9 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
-        for day in DataManager.sharedInstance.getAllRecords() {
-            print(day.moonRise)
-        }
+        
         
         
         

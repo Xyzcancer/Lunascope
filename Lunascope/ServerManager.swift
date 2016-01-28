@@ -28,6 +28,8 @@ class ServerManager: NSObject {
             if (error == nil) {
                 let dataManager = DataManager.sharedInstance
                 let monthData = JSON(responsObj!)
+                print(monthData)
+
                 for dayData in monthData.array! {
                     dataManager.createDay(dayData["moonday"].intValue, moonSet: dayData["moonset"].doubleValue, moonRise: dayData["moonrise"].doubleValue)
                 }
