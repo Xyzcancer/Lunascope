@@ -15,7 +15,7 @@ import CoreData
 extension LunarDay {
 
     @NSManaged var dayNumber: NSNumber?
-    @NSManaged var moonSet: NSDate?
-    @NSManaged var moonRise: NSDate?
+    @NSManaged var moonSet: NSNumber?
+    @NSManaged var moonRise: NSNumber?
 
 }

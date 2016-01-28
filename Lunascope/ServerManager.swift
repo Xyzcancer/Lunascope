@@ -8,26 +8,32 @@
 
 import Foundation
 import Alamofire
+import Parse
+import SwiftyJSON
+
 
 
 
 class ServerManager: NSObject {
     
-    
-     struct MoonSetRiseParams {
-        var day: Int
-        var month: Int
-        var year: Int
-        var lat: Double
-        var lon: Double
-    
-    }
+   
     
     static let sharedInstance = ServerManager()
     let serverAddress = "http://lab.ace-solutions.ru/moon/"
     
     
-    
+    func getMoonMonth(Longitude lon : Double,Latitude lat : Double, requestTimestamp timestamp: Double) {
+        PFCloud.callFunctionInBackground("getLunarMonthData", withParameters: ["lon": lon, "lat": lat, "requestTimestamp": timestamp]) {
+            (responsObj, error) in
+            if (error == nil) {
+                let dataManager = DataManager.sharedInstance
+                let monthData = JSON(responsObj!)
+                for dayData in monthData.array! {
+                    dataManager.createDay(dayData["moonday"].intValue, moonSet: dayData["moonset"].doubleValue, moonRise: dayData["moonrise"].doubleValue)
+                }
+            }
+        }
+    }
     
     func getNewMoonDate() {
     
@@ -35,62 +41,10 @@ class ServerManager: NSObject {
             
             if let JSON = response.result.value {
 
-                let dateNewMoon  = NSDate.init(timeIntervalSince1970:JSON["new_moon"] as! Double )
-                self.createLunarMonthByNewMoonDate(dateNewMoon)
+                _  = NSDate.init(timeIntervalSince1970:JSON["new_moon"] as! Double )
             }
         }
     }
-    
-    func getNewMoonRiseSet(param : MoonSetRiseParams, dayNumber : Int) {
-        
-        let params = ["day":"\(param.day)",
-                    "month":"\(param.month)",
-                     "year":"\(param.year)",
-                      "lat":"\(param.lat)",
-                      "lon":"\(param.lon)",]
-        
-        Alamofire.request(.GET, serverAddress, parameters: params).responseJSON { response in
-            
-            if let JSON = response.result.value {
-                
-                let moonSet  = NSDate.init(timeIntervalSince1970:JSON["moonrise"] as! Double )
-                let moonRise  = NSDate.init(timeIntervalSince1970:JSON["moonset"] as! Double )
-                
-                DataManager.sharedInstance.createDay(dayNumber, moonSet: moonSet, moonRise: moonRise);
-            }
-        }
-    }
-    
-    func createLunarMonthByNewMoonDate(newMoonDate : NSDate) {
-        
-        
-        
-        var curDate = newMoonDate
-        let daysToAdd = 1.0;
-        
-        
-        for index in 1...32 {
-            curDate = curDate.dateByAddingTimeInterval((60*60*24*daysToAdd) as Double)
-            
-            let calendar = NSCalendar.currentCalendar()
-            let components = calendar.components([.Day , .Month , .Year], fromDate: curDate)
-            
-            let year =  components.year
-            let month = components.month
-            let day = components.day
-            let defaults = NSUserDefaults.standardUserDefaults()
-            
-            let paramsDay = MoonSetRiseParams.init(day: day, month: month, year: year, lat: defaults.doubleForKey("lat"), lon: defaults.doubleForKey("lat"))
-            
-            getNewMoonRiseSet(paramsDay, dayNumber: index)
-
-        }
-
-        
-        
-        
-    }
-    
     
     func getDaysBetweenTwoDates(startDate: NSDate, endDate: NSDate) -> NSDateComponents {
         

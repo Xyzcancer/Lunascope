@@ -14,7 +14,26 @@ class DataManager: NSObject {
     static let sharedInstance = DataManager()
 
     
-    func createDay(dayNumber : Int, moonSet : NSDate, moonRise : NSDate) {
+    func getAllRecords() -> [LunarDay] {
+    
+        
+        let managedContext = self.managedObjectContext
+        
+        //2
+        let fetchRequest = NSFetchRequest(entityName: "LunarDay")
+        
+        //3
+        do {
+            let results =
+            try managedContext.executeFetchRequest(fetchRequest)
+            return results as! [LunarDay]
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        return [LunarDay]()
+    }
+    
+    func createDay(dayNumber : Int, moonSet : Double, moonRise : Double) {
         
         let entity =  NSEntityDescription.entityForName("LunarDay",
             inManagedObjectContext:self.managedObjectContext)

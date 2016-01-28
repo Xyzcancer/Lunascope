@@ -29,9 +29,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             locationManager.startUpdatingLocation()
         }
         
-        let serverManager = ServerManager.sharedInstance;
-        serverManager.getNewMoonDate();
-        
+       
         
         
         // Do any additional setup after loading the view, typically from a nib.
@@ -64,6 +62,11 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         
         print("locations = \(locValue.latitude) \(locValue.longitude)")
         locationManager.stopUpdatingLocation();
+        
+     //   let serverManager = ServerManager.sharedInstance;
+        
+       // serverManager.getMoonMonth(Longitude: locValue.longitude, Latitude: locValue.latitude, requestTimestamp: NSDate.init().timeIntervalSince1970);
+        
         
     }
 
