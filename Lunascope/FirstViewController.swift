@@ -65,7 +65,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         
         let serverManager = ServerManager.sharedInstance;
         
-        //serverManager.getMoonMonth(Longitude: locValue.longitude, Latitude: locValue.latitude, requestTimestamp: NSDate.init().timeIntervalSince1970);
+        serverManager.getMoonMonth(Longitude: locValue.longitude, Latitude: locValue.latitude, requestTimestamp: NSDate.init().timeIntervalSince1970);
         
         for day in DataManager.sharedInstance.getAllRecords() {
             print(day.moonRise)

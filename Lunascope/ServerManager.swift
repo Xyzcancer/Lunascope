@@ -23,18 +23,31 @@ class ServerManager: NSObject {
     
     
     func getMoonMonth(Longitude lon : Double,Latitude lat : Double, requestTimestamp timestamp: Double) {
-        PFCloud.callFunctionInBackground("getLunarMonthData", withParameters: ["lon": lon, "lat": lat, "requestTimestamp": timestamp]) {
-            (responsObj, error) in
-            if (error == nil) {
+        
+        
+        Alamofire.request(.GET, "http://localhost/moon/", parameters: ["lon": lon, "lat": lat, "requestTimestamp": timestamp]).responseJSON { response in
+            
+            if let JSON = response.result.value {
                 let dataManager = DataManager.sharedInstance
-                let monthData = JSON(responsObj!)
-                print(monthData)
 
-                for dayData in monthData.array! {
-                    dataManager.createDay(dayData["moonday"].intValue, moonSet: dayData["moonset"].doubleValue, moonRise: dayData["moonrise"].doubleValue)
+                for day in JSON as! NSArray {
+                    
+                    dataManager.createDay(day["moonday"] as! Int, moonSet: day["moonset"] as! Double, moonRise: day["moonrise"] as! Double)
+
                 }
+                
             }
         }
+//        PFCloud.callFunctionInBackground("getLunarMonthData", withParameters: ) {
+//            (responsObj, error) in
+//            if (error == nil) {
+//                let monthData = JSON(responsObj!)
+//                print(monthData)
+//
+//                for dayData in monthData.array! {
+//                }
+//            }
+//        }
     }
     
     func getNewMoonDate() {
